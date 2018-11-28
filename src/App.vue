@@ -1,20 +1,8 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
+    <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
       <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
+        <v-list-tile value="true" v-for="(item, i) in items" :key="i">
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
@@ -24,10 +12,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      app
-      :clipped-left="clipped"
-    >
+    <v-toolbar app :clipped-left="clipped">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
@@ -45,16 +30,23 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <HelloWorld/>
+      <v-button @click="handleClick">Test Button 2</v-button>
+      <form ref="form1" id="tlh-form" class="example basic flex-rw">
+        <form-first-name v-model="submit.firstName" label="First Name"></form-first-name>
+        <form-email v-model="submit.email" />
+        <form-legal-text></form-legal-text>
+        <form-submit :disableOnErrors="true" text="Get New"></form-submit>
+        <form-legal-text school="Alvernia University" fontSize="1.1em" textColor="blue" />
+      </form>
+
+      <!-- <CustomModules/> -->
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
+    <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
+        <v-card heading="Card Header">
+          <p slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit eius corrupti a sint recusandae neque dolorum distinctio cupiditate. Unde non, odit praesentium odio, voluptate laboriosam eos quod vero ipsa nemo.</p>
+          <div slot="footer">Card Footer</div>
+        </v-card>
         <v-list-tile @click="right = !right">
           <v-list-tile-action>
             <v-icon>compare_arrows</v-icon>
@@ -70,27 +62,40 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import CustomModules from "./components/CustomModules";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    CustomModules
   },
   data () {
     return {
+      submit: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: ""
+      },
       clipped: false,
       drawer: true,
       fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
+      items: [
+        {
+          icon: "bubble_chart",
+          title: "Inspire"
+        }
+      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: "Vuetify.js"
+    };
+  },
+  methods: {
+    handleClick () {
+      alert('Worked!')
     }
   }
-}
+};
 </script>

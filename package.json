@@ -3,13 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve": "http-server dist"
   },
   "dependencies": {
+    "quill": "^1.3.6",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
+    "quill-markdown-shortcuts": "^0.0.6",
+    "vee-validate": "^2.1.3",
+    "vlh-forms2": "davidroyer/vlh-forms2#master",
     "vue": "^2.5.16",
-    "vuetify": "^1.0.16"
+    "vue-rich-editor": "^0.7.4",
+    "vue2-editor": "^2.6.1",
+    "vuetify": "^1.0.16",
+    "vuxi": "^0.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.16",
